@@ -18,15 +18,20 @@ buttons.forEach((button) => {
         const delExpression = expression.innerHTML.substring(0, end);
         expression.innerHTML = delExpression;
         break;
-      case "( )":
-        if (expression.innerHTML) expression.innerHTML = delExpression;
+      case ".":
+        if (
+          expression.innerHTML.length > 0 &&
+          !/\d*\.\d*\.?/.test(expression.innerHTML.slice(-1))
+        ) {
+          expression.innerHTML += ".";
+        }
         break;
       case "=":
         if (expression.innerHTML.length > 0) {
           let newExpression = expression.innerHTML.replace("x", "*");
           newExpression = newExpression.replace("%", "/100");
           try {
-            expression.innerHTML = eval(newExpression);
+            expression.innerHTML = String(eval(newExpression)).substring(0, 14);
             pressEquals = true;
           } catch (error) {
             console.error(error);
@@ -34,6 +39,7 @@ buttons.forEach((button) => {
         }
         break;
       default:
+        if (expression.innerHTML.length >= 14) return; // verificar
         expression.innerHTML += button.innerHTML;
     }
   });

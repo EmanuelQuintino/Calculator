@@ -89,6 +89,7 @@ header h1 {
 
 .gridButtons button.equals {
   background: var(--complementary-color);
+  grid-column: span 2;
 }
 
 footer {
