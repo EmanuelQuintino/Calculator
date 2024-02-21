@@ -98,4 +98,9 @@ footer {
 footer a {
   font-size: 1.2rem;
   text-decoration: none;
+  padding: 1.2rem;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
