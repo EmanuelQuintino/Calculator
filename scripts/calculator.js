@@ -18,11 +18,20 @@ buttons.forEach((button) => {
         const delExpression = expression.innerHTML.substring(0, end);
         expression.innerHTML = delExpression;
         break;
+      case "( )":
+        if (expression.innerHTML) expression.innerHTML = delExpression;
+        break;
       case "=":
-        let newExpression = expression.innerHTML.replace("x", "*");
-        newExpression = newExpression.replace("%", "/100");
-        expression.innerHTML = eval(newExpression);
-        pressEquals = true;
+        if (expression.innerHTML.length > 0) {
+          let newExpression = expression.innerHTML.replace("x", "*");
+          newExpression = newExpression.replace("%", "/100");
+          try {
+            expression.innerHTML = eval(newExpression);
+            pressEquals = true;
+          } catch (error) {
+            console.error(error);
+          }
+        }
         break;
       default:
         expression.innerHTML += button.innerHTML;
