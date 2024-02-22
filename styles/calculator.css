@@ -60,7 +60,7 @@ header h1 {
 .expression {
   position: absolute;
   bottom: 1.6rem;
-  right: 3.6rem;
+  right: 2.4rem;
   font-size: clamp(1.6rem, 3.5vw, 3.2rem);
   color: var(--button-text-color);
 }
@@ -69,7 +69,7 @@ header h1 {
   content: "|";
   position: absolute;
   bottom: 0rem;
-  right: -2rem;
+  right: -1rem;
   animation: blink 1s infinite;
 }
 
@@ -145,5 +145,13 @@ footer a:hover {
   .screen {
     width: 70%;
     height: 25rem;
+  }
+
+  .expression {
+    right: 3.6rem;
+  }
+
+  .expression::after {
+    right: -2rem;
   }
 }
