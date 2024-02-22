@@ -2,18 +2,22 @@ const expression = document.querySelector(".expression");
 const buttons = document.querySelectorAll(".gridButtons button");
 const expressionDisplay = document.querySelector(".expressionDisplay");
 
-let pressEquals = false;
+function clearScreen() {
+  expression.innerHTML = "";
+  expressionDisplay.innerHTML = "";
+}
+
+let isError = false;
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    if (pressEquals) {
-      expression.innerHTML = "";
-      pressEquals = false;
+    if (isError) {
+      clearScreen();
+      isError = false;
     }
 
     switch (button.innerHTML) {
       case "C":
-        expression.innerHTML = "";
-        expressionDisplay.innerHTML = "";
+        clearScreen();
         break;
       case "DEL":
         expression.innerHTML = expression.innerHTML.slice(0, -1);
@@ -31,17 +35,29 @@ buttons.forEach((button) => {
           let newExpression = expression.innerHTML.replace("x", "*");
           newExpression = newExpression.replace("%", "/100");
           try {
-            expressionDisplay.innerHTML = expression.innerHTML;
-            expression.innerHTML = String(eval(newExpression)).substring(0, 14);
-            pressEquals = true;
+            const auxExpressionDisplay = expression.innerHTML;
+
+            // substring 18 - 0 for to continue expression
+            expression.innerHTML = String(eval(newExpression)).substring(0, 18 - 0);
+            expressionDisplay.innerHTML = auxExpressionDisplay;
           } catch (error) {
+            expression.innerHTML = "Error";
             console.error(error);
+            isError = true;
           }
         }
         break;
       default:
-        if (expression.innerHTML.length >= 18) return; // verificar
-        expression.innerHTML += button.innerHTML;
+        if (expression.innerHTML.length >= 18) return;
+
+        const operations = ["+", "-", "x", "/"];
+        const endExpression = expression.innerHTML.slice(-1);
+
+        if (operations.includes(endExpression) && operations.includes(button.innerHTML)) {
+          expression.innerHTML = expression.innerHTML.slice(0, -1) + button.innerHTML;
+        } else {
+          expression.innerHTML += button.innerHTML;
+        }
     }
   });
 });
