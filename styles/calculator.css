@@ -93,7 +93,8 @@ header h1 {
   text-align: center;
   border-radius: 0.8rem;
   padding: 1.2rem;
-  font-size: clamp(1rem, 2vw, 1.6rem);
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  height: clamp(1.6rem, 15vw, 9.6rem);
   cursor: pointer;
 }
 
@@ -168,5 +169,10 @@ footer a:hover {
     right: 4.8rem;
     font-size: clamp(0.8rem, 1.5vw, 2rem);
     color: var(--button-number-color);
+  }
+
+  .gridButtons button {
+    font-size: clamp(1rem, 2vw, 1.6rem);
+    height: auto;
   }
 }
