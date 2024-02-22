@@ -1,5 +1,6 @@
 const expression = document.querySelector(".expression");
 const buttons = document.querySelectorAll(".gridButtons button");
+const expressionDisplay = document.querySelector(".expressionDisplay");
 
 let pressEquals = false;
 buttons.forEach((button) => {
@@ -12,11 +13,10 @@ buttons.forEach((button) => {
     switch (button.innerHTML) {
       case "C":
         expression.innerHTML = "";
+        expressionDisplay.innerHTML = "";
         break;
       case "DEL":
-        const end = expression.innerHTML.length - 1;
-        const delExpression = expression.innerHTML.substring(0, end);
-        expression.innerHTML = delExpression;
+        expression.innerHTML = expression.innerHTML.slice(0, -1);
         break;
       case ".":
         if (
@@ -31,6 +31,7 @@ buttons.forEach((button) => {
           let newExpression = expression.innerHTML.replace("x", "*");
           newExpression = newExpression.replace("%", "/100");
           try {
+            expressionDisplay.innerHTML = expression.innerHTML;
             expression.innerHTML = String(eval(newExpression)).substring(0, 14);
             pressEquals = true;
           } catch (error) {
@@ -39,7 +40,7 @@ buttons.forEach((button) => {
         }
         break;
       default:
-        if (expression.innerHTML.length >= 14) return; // verificar
+        if (expression.innerHTML.length >= 18) return; // verificar
         expression.innerHTML += button.innerHTML;
     }
   });

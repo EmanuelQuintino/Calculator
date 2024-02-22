@@ -59,8 +59,8 @@ header h1 {
 
 .expression {
   position: absolute;
-  bottom: 1.6rem;
-  right: 2.4rem;
+  bottom: 2rem;
+  right: 2.8rem;
   font-size: clamp(1.6rem, 3.5vw, 3.2rem);
   color: var(--button-text-color);
 }
@@ -71,6 +71,14 @@ header h1 {
   bottom: 0rem;
   right: -1rem;
   animation: blink 1s infinite;
+}
+
+.expressionDisplay {
+  position: absolute;
+  bottom: 5.2rem;
+  right: 2.8rem;
+  font-size: clamp(0.8rem, 2.5vw, 2.4rem);
+  color: var(--button-number-color);
 }
 
 .gridButtons {
@@ -148,10 +156,17 @@ footer a:hover {
   }
 
   .expression {
-    right: 3.6rem;
+    right: 4.8rem;
   }
 
   .expression::after {
     right: -2rem;
+  }
+
+  .expressionDisplay {
+    bottom: 7.2rem;
+    right: 4.8rem;
+    font-size: clamp(0.8rem, 1.5vw, 2rem);
+    color: var(--button-number-color);
   }
 }
