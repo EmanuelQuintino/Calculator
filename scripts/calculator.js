@@ -1,6 +1,6 @@
 const expression = document.querySelector(".expression");
-const buttons = document.querySelectorAll(".gridButtons button");
 const expressionDisplay = document.querySelector(".expressionDisplay");
+const buttons = document.querySelectorAll(".gridButtons button");
 const buttonHistory = document.querySelector(".buttonHistory");
 const modalHistory = document.querySelector(".modalHistory");
 const buttonCloseModal = document.querySelector(".buttonCloseModal");
@@ -37,17 +37,11 @@ buttons.forEach((button) => {
         break;
       case "=":
         if (expression.innerHTML.length > 0) {
-          let newExpression = expression.innerHTML.replace("x", "*");
-          newExpression = newExpression.replace("%", "/100");
           try {
-            const auxExpressionDisplay = expression.innerHTML;
-
-            // substring totalNumbersDisplay - 0 for to continue expression
-            expression.innerHTML = String(eval(newExpression)).substring(
-              0,
-              totalNumbersDisplay - 0
-            );
-            expressionDisplay.innerHTML = auxExpressionDisplay;
+            expressionDisplay.innerHTML = expression.innerHTML;
+            expression.innerHTML = String(
+              eval(expression.innerHTML.replace("x", "*").replace("%", "/100"))
+            ).slice(0, totalNumbersDisplay - 0); // to continue expression
           } catch (error) {
             expression.innerHTML = "Error";
             console.error(error);
