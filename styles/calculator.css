@@ -60,6 +60,14 @@ header h1 {
 }
 
 .buttonHistory {
+  background: none;
+  border: transparent;
+  transition: 200ms;
+}
+
+.buttonHistory:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 aside {
@@ -137,7 +145,7 @@ aside {
 
 .gridButtons button:hover {
   cursor: pointer;
-  filter: brightness(1.05);
+  filter: brightness(1.1);
 }
 
 .gridButtons button.text {
