@@ -24,14 +24,6 @@ buttons.forEach((button) => {
       case "DEL":
         expression.innerHTML = expression.innerHTML.slice(0, -1);
         break;
-      case ".":
-        if (
-          expression.innerHTML.length > 0 &&
-          !/\d*\.\d*\.?/.test(expression.innerHTML.slice(-1))
-        ) {
-          expression.innerHTML += ".";
-        }
-        break;
       case "=":
         if (expression.innerHTML.length > 0) {
           let newExpression = expression.innerHTML.replace("x", "*");
@@ -55,7 +47,7 @@ buttons.forEach((button) => {
       default:
         if (expression.innerHTML.length >= totalNumbersDisplay) return;
 
-        const operations = ["+", "-", "x", "/"];
+        const operations = ["+", "-", "x", "/", "."];
         const endExpression = expression.innerHTML.slice(-1);
 
         if (operations.includes(endExpression) && operations.includes(button.innerHTML)) {
