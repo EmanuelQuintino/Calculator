@@ -81,7 +81,7 @@ header h1 {
   position: absolute;
   bottom: 4.8rem;
   right: 2.8rem;
-  font-size: clamp(0.8rem, 1.5vw, 1.6rem);
+  font-size: clamp(1rem, 1.5vw, 1.6rem);
   color: var(--button-number-color);
 }
 
