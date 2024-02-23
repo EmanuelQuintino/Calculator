@@ -8,7 +8,7 @@ function clearScreen() {
 }
 
 let isError = false;
-const totalNumbersDisplay = 15;
+const totalNumbersDisplay = 13;
 
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
