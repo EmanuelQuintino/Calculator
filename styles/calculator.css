@@ -79,10 +79,11 @@ header h1 {
   border-radius: 8px;
   border: none;
   width: 60%;
-  height: 60%;
-  padding: 1.6rem 0.8rem;
+  height: 42rem;
+  padding: 1.6rem 0.8rem 0rem;
   margin: 35% auto;
   box-shadow: inset 0 0 12px 1px rgba(0, 0, 0, 0.8);
+  text-align: center;
 }
 
 .modalHistory::backdrop {
@@ -96,6 +97,7 @@ header h1 {
   border: transparent;
   color: var(--button-text-color);
   font-size: 1.2rem;
+  padding: 0.8rem;
 }
 
 .buttonCloseModal:hover {
@@ -105,7 +107,7 @@ header h1 {
 
 .containerHistory {
   overflow: auto;
-  height: 95%;
+  height: 85%;
   padding: 2rem 1.2rem;
 }
 
@@ -132,12 +134,16 @@ header h1 {
   border: transparent;
   color: var(--button-text-color);
   font-size: 1rem;
-  width: 100%;
+  width: 12rem;
+  margin: 1.2rem auto;
+  background: #66666622;
+  border-radius: 8px;
+  padding: 0.8rem;
 }
 
 .clearButtonHistory:hover {
   cursor: pointer;
-  text-decoration: underline;
+  background: #66666633;
 }
 
 .screen {
@@ -254,9 +260,9 @@ footer a:hover {
 
   .modalHistory {
     width: 56rem;
-    height: 38rem;
-    padding: 2.4rem 1.6rem;
-    margin: 10% auto;
+    height: 42rem;
+    padding: 2.4rem 1.6rem 0.4rem;
+    margin: 7% auto;
   }
 
   .buttonCloseModal {
@@ -266,7 +272,7 @@ footer a:hover {
   }
 
   .containerHistory {
-    padding: 2rem 1.2rem;
+    padding: 1.2rem 1.2rem 0;
   }
 
   .boxHistory + .boxHistory {
@@ -275,6 +281,31 @@ footer a:hover {
 
   .clearButtonHistory {
     font-size: 1.2rem;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--button-number-color);
+    border-radius: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--button-text-color);
+  }
+
+  ::-moz-scrollbar {
+    width: 6px;
+  }
+
+  ::-moz-scrollbar-thumb {
+    background: var(--button-number-color);
+  }
+
+  ::-moz-scrollbar-thumb:hover {
+    background: var(--button-text-color);
   }
 
   .screen {
