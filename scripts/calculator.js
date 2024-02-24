@@ -71,7 +71,7 @@ function updateHistory() {
 
   containerHistory.innerHTML = "";
   if (historyExpressions) {
-    for (let i = 0; i < historyExpressions.length; i++) {
+    for (let i = historyExpressions.length - 1; i >= 0; i--) {
       containerHistory.innerHTML += `
         <div class="boxHistory">
           <div class="expressionHistory">${historyExpressions[i].expression}</div>
