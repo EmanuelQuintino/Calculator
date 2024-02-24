@@ -16,7 +16,7 @@
   box-sizing: border-box;
 
   font-size: 1.6rem;
-  color: white;
+  color: #e5e5e5;
   font-family: "Press Start 2P", system-ui;
 
   font-synthesis: none;
@@ -51,10 +51,10 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 1.6rem;
 }
 
 header h1 {
-  margin-top: 1.6rem;
   font-size: clamp(1.4rem, 3vw, 2.4rem);
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
@@ -70,11 +70,9 @@ header h1 {
   transform: scale(1.1);
 }
 
-/* aside {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
+.buttonHistory img {
+  width: 2rem;
+}
 
 .modalHistory {
   background: var(--screen-color);
@@ -100,6 +98,11 @@ header h1 {
   font-size: 1.2rem;
 }
 
+.buttonCloseModal:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
 .containerHistory {
   overflow: auto;
   height: 95%;
@@ -115,12 +118,12 @@ header h1 {
 }
 
 .expressionHistory {
-  font-size: clamp(0.8rem, 1vw, 1.2rem);
+  font-size: clamp(0.8rem, 1vw, 1rem);
   color: var(--button-number-color);
 }
 
 .resultHitory {
-  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
   color: var(--button-text-color);
   margin-top: 1rem;
 }
@@ -130,6 +133,11 @@ header h1 {
   color: var(--button-text-color);
   font-size: 1rem;
   width: 100%;
+}
+
+.clearButtonHistory:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .screen {
@@ -233,11 +241,40 @@ footer a:hover {
     padding: 4.2rem;
   }
 
+  .buttonHistory img {
+    width: 2.4rem;
+  }
+
   main {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 3.2rem;
+  }
+
+  .modalHistory {
+    width: 56rem;
+    height: 38rem;
+    padding: 2.4rem 1.6rem;
+    margin: 10% auto;
+  }
+
+  .buttonCloseModal {
+    top: 2.4rem;
+    left: 2.4rem;
+    font-size: 1.2rem;
+  }
+
+  .containerHistory {
+    padding: 2rem 1.2rem;
+  }
+
+  .boxHistory + .boxHistory {
+    margin-top: 2.4rem;
+  }
+
+  .clearButtonHistory {
+    font-size: 1.2rem;
   }
 
   .screen {
