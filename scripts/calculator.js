@@ -23,6 +23,33 @@ function executeExpression() {
       expression.innerHTML = String(
         eval(expression.innerHTML.replace("x", "*").replace("%", "/100"))
       ).slice(0, totalNumbersDisplay - 0); // to continue expression
+
+      const historyExpressions = JSON.parse(
+        localStorage.getItem("@calculator:expressionHistory")
+      );
+
+      if (historyExpressions) {
+        localStorage.setItem(
+          "@calculator:expressionHistory",
+          JSON.stringify([
+            ...historyExpressions.slice(-20), // limit history
+            {
+              result: expression.innerHTML,
+              expression: expressionDisplay.innerHTML,
+            },
+          ])
+        );
+      } else {
+        localStorage.setItem(
+          "@calculator:expressionHistory",
+          JSON.stringify([
+            {
+              result: expression.innerHTML,
+              expression: expressionDisplay.innerHTML,
+            },
+          ])
+        );
+      }
     } catch (error) {
       expression.innerHTML = "Error";
       console.error(error);
@@ -31,32 +58,40 @@ function executeExpression() {
   }
 }
 
-function typeDisplay() {
+function updateHistory() {
+  const historyExpressions = JSON.parse(
+    localStorage.getItem("@calculator:expressionHistory")
+  );
+
+  containerHistory.innerHTML = "";
+  if (historyExpressions) {
+    for (let i = 0; i < historyExpressions.length; i++) {
+      containerHistory.innerHTML += `
+        <div class="boxHistory">
+          <div class="expressionHistory">${historyExpressions[i].expression}</div>
+          <div class="resultHitory">${historyExpressions[i].result}</div>
+        </div>
+      `;
+    }
+  }
+}
+
+function typeDisplay(button) {
   if (expression.innerHTML.length >= totalNumbersDisplay) return;
 
   const operations = ["+", "-", "x", "/", "."];
   const endExpression = expression.innerHTML.slice(-1);
 
-  if (operations.includes(endExpression) && operations.includes(button.innerHTML)) {
-    expression.innerHTML = expression.innerHTML.slice(0, -1) + button.innerHTML;
+  if (operations.includes(endExpression) && operations.includes(button)) {
+    expression.innerHTML = expression.innerHTML.slice(0, -1) + button;
   } else {
-    expression.innerHTML += button.innerHTML;
-  }
-}
-
-function updateHistory() {
-  for (let i = 0; i < 10; i++) {
-    containerHistory.innerHTML += `
-      <div class="boxHistory">
-        <div class="expressionHistory">2+3</div>
-        <div class="resultHitory">5</div>
-      </div>
-    `;
+    expression.innerHTML += button;
   }
 }
 
 buttonHistory.addEventListener("click", () => {
   modalHistory.showModal();
+  updateHistory();
 });
 
 buttonCloseModal.addEventListener("click", () => {
@@ -64,7 +99,8 @@ buttonCloseModal.addEventListener("click", () => {
 });
 
 clearButtonHistory.addEventListener("click", () => {
-  modalHistory.close();
+  localStorage.removeItem("@calculator:expressionHistory");
+  updateHistory();
 });
 
 let isError = false;
@@ -89,7 +125,7 @@ buttons.forEach((button) => {
         updateHistory();
         break;
       default:
-        typeDisplay();
+        typeDisplay(button.innerHTML);
         break;
     }
   });
