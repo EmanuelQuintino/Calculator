@@ -296,18 +296,6 @@ footer a:hover {
     background: var(--button-text-color);
   }
 
-  ::-moz-scrollbar {
-    width: 6px;
-  }
-
-  ::-moz-scrollbar-thumb {
-    background: var(--button-number-color);
-  }
-
-  ::-moz-scrollbar-thumb:hover {
-    background: var(--button-text-color);
-  }
-
   .screen {
     width: 60vw;
     height: 27rem;

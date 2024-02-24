@@ -105,8 +105,11 @@ buttonCloseModal.addEventListener("click", () => {
 });
 
 clearButtonHistory.addEventListener("click", () => {
-  localStorage.removeItem("@calculator:expressionHistory");
-  updateHistory();
+  const responseIsClear = confirm("Deseja limpar histórico?");
+  if (responseIsClear) {
+    localStorage.removeItem("@calculator:expressionHistory");
+    updateHistory();
+  }
 });
 
 let isError = false;
