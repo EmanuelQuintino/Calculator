@@ -17,12 +17,18 @@ function deleteCharacter() {
 }
 
 function executeExpression() {
-  if (expression.innerHTML.length > 0) {
+  if (
+    (expression.innerHTML.length > 0 && expression.innerHTML.includes("+")) ||
+    expression.innerHTML.includes("-") ||
+    expression.innerHTML.includes("x") ||
+    expression.innerHTML.includes("/") ||
+    expression.innerHTML.includes("%")
+  ) {
     try {
       expressionDisplay.innerHTML = expression.innerHTML;
       expression.innerHTML = String(
-        eval(expression.innerHTML.replace("x", "*").replace("%", "/100"))
-      ).slice(0, totalNumbersDisplay - 0); // to continue expression
+        eval(expression.innerHTML.replaceAll("x", "*").replaceAll("%", "/100"))
+      ).slice(0, totalNumbersDisplay - 5); // to continue expression
 
       const historyExpressions = JSON.parse(
         localStorage.getItem("@calculator:expressionHistory")
