@@ -78,7 +78,7 @@ header h1 {
   background: var(--screen-color);
   border-radius: 8px;
   border: none;
-  width: 60%;
+  width: 24rem;
   height: 42rem;
   padding: 1.6rem 0.8rem 0rem;
   margin: 35% auto;
