@@ -17,6 +17,7 @@
 
   font-size: 1.6rem;
   color: #e5e5e5;
+  background: var(--box-color);
   font-family: "Press Start 2P", system-ui;
 
   font-synthesis: none;
@@ -124,13 +125,13 @@ header h1 {
   color: var(--button-number-color);
 }
 
-.resultHitory {
+.resultHistory {
   font-size: clamp(1.2rem, 2vw, 1.6rem);
   color: var(--button-text-color);
   margin-top: 0.8rem;
 }
 
-.clearButtonHistory {
+.buttonClearHistory {
   border: transparent;
   color: var(--button-text-color);
   font-size: 1rem;
@@ -141,7 +142,7 @@ header h1 {
   padding: 0.8rem;
 }
 
-.clearButtonHistory:hover {
+.buttonClearHistory:hover {
   cursor: pointer;
   background: #66666633;
 }
@@ -279,7 +280,7 @@ footer a:hover {
     margin-top: 2.4rem;
   }
 
-  .clearButtonHistory {
+  .buttonClearHistory {
     font-size: 1.2rem;
   }
 

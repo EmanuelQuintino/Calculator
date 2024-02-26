@@ -5,7 +5,7 @@ const buttonHistory = document.querySelector(".buttonHistory");
 const modalHistory = document.querySelector(".modalHistory");
 const buttonCloseModal = document.querySelector(".buttonCloseModal");
 const containerHistory = document.querySelector(".containerHistory");
-const clearButtonHistory = document.querySelector(".clearButtonHistory");
+const buttonClearHistory = document.querySelector(".buttonClearHistory");
 
 function clearScreen() {
   expression.innerHTML = "";
@@ -104,7 +104,7 @@ buttonCloseModal.addEventListener("click", () => {
   modalHistory.close();
 });
 
-clearButtonHistory.addEventListener("click", () => {
+buttonClearHistory.addEventListener("click", () => {
   const responseIsClear = confirm("Deseja limpar histórico?");
   if (responseIsClear) {
     localStorage.removeItem("@calculator:expressionHistory");
