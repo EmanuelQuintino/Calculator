@@ -1,7 +1,13 @@
+@font-face {
+  font-family: Pixel_Press_Start_2P;
+  src: url(/fonts/Press_Start_2P/PressStart2P-Regular.ttf);
+}
+
 :root {
   font-size: 62.5%;
   scroll-behavior: smooth;
 
+  --text-color: #f0f0f0;
   --background-color: #252525;
   --screen-color: #bbbfaa;
   --box-color: #333333;
@@ -16,9 +22,8 @@
   box-sizing: border-box;
 
   font-size: 1.6rem;
-  color: #e5e5e5;
-  background: var(--box-color);
-  font-family: "Press Start 2P", system-ui;
+  color: var(--text-color);
+  font-family: Pixel_Press_Start_2P, "Press Start 2P";
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

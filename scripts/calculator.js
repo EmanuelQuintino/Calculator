@@ -75,7 +75,7 @@ function updateHistory() {
       containerHistory.innerHTML += `
         <div class="boxHistory">
           <div class="expressionHistory">${historyExpressions[i].expression}</div>
-          <div class="resultHitory">${historyExpressions[i].result}</div>
+          <div class="resultHistory">${historyExpressions[i].result}</div>
         </div>
       `;
     }
