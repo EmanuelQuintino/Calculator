@@ -61,18 +61,18 @@ header h1 {
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-.buttonHistory {
+.buttonOpenHistory {
   background: none;
   border: transparent;
   transition: 200ms;
 }
 
-.buttonHistory:hover {
+.buttonOpenHistory:hover {
   cursor: pointer;
   transform: scale(1.1);
 }
 
-.buttonHistory img {
+.buttonOpenHistory img {
   width: 2rem;
 }
 
@@ -258,15 +258,8 @@ footer a:hover {
     padding: 4.2rem;
   }
 
-  .buttonHistory img {
+  .buttonOpenHistory img {
     width: 2.4rem;
-  }
-
-  main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3.2rem;
   }
 
   .modalHistory {
@@ -305,6 +298,13 @@ footer a:hover {
 
   ::-webkit-scrollbar-thumb:hover {
     background: var(--button-text-color);
+  }
+
+  main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3.2rem;
   }
 
   .screen {

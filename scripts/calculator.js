@@ -1,10 +1,10 @@
 const expression = document.querySelector(".expression");
 const expressionDisplay = document.querySelector(".expressionDisplay");
 const buttons = document.querySelectorAll(".gridButtons button");
-const buttonHistory = document.querySelector(".buttonHistory");
+const buttonOpenHistory = document.querySelector(".buttonOpenHistory");
 const modalHistory = document.querySelector(".modalHistory");
-const buttonCloseModal = document.querySelector(".buttonCloseModal");
 const containerHistory = document.querySelector(".containerHistory");
+const buttonCloseModal = document.querySelector(".buttonCloseModal");
 const buttonClearHistory = document.querySelector(".buttonClearHistory");
 
 function clearScreen() {
@@ -30,15 +30,13 @@ function executeExpression() {
         eval(expression.innerHTML.replaceAll("x", "*").replaceAll("%", "/100"))
       ).slice(0, totalNumbersDisplay - 5); // to continue expression
 
-      const historyExpressions = JSON.parse(
-        localStorage.getItem("@calculator:expressionHistory")
-      );
+      const calculatorHistory = JSON.parse(localStorage.getItem("@calculator:history"));
 
-      if (historyExpressions) {
+      if (calculatorHistory) {
         localStorage.setItem(
-          "@calculator:expressionHistory",
+          "@calculator:history",
           JSON.stringify([
-            ...historyExpressions.slice(-20), // limit history
+            ...calculatorHistory.slice(-20), // limit history
             {
               result: expression.innerHTML,
               expression: expressionDisplay.innerHTML,
@@ -47,7 +45,7 @@ function executeExpression() {
         );
       } else {
         localStorage.setItem(
-          "@calculator:expressionHistory",
+          "@calculator:history",
           JSON.stringify([
             {
               result: expression.innerHTML,
@@ -65,22 +63,20 @@ function executeExpression() {
 }
 
 function updateHistory() {
-  const historyExpressions = JSON.parse(
-    localStorage.getItem("@calculator:expressionHistory")
-  );
+  const calculatorHistory = JSON.parse(localStorage.getItem("@calculator:history"));
 
   containerHistory.innerHTML = "";
-  if (historyExpressions) {
-    for (let i = historyExpressions.length - 1; i >= 0; i--) {
+  if (calculatorHistory) {
+    for (let i = calculatorHistory.length - 1; i >= 0; i--) {
       containerHistory.innerHTML += `
         <div class="boxHistory">
-          <div class="expressionHistory">${historyExpressions[i].expression}</div>
-          <div class="resultHistory">${historyExpressions[i].result}</div>
+          <div class="expressionHistory">${calculatorHistory[i].expression}</div>
+          <div class="resultHistory">${calculatorHistory[i].result}</div>
         </div>
       `;
     }
   } else {
-    containerHistory.innerHTML += `<div class="emptyHistory">Vazio</div>`;
+    containerHistory.innerHTML = `<div class="emptyHistory">Vazio</div>`;
   }
 }
 
@@ -97,7 +93,7 @@ function typeDisplay(button) {
   }
 }
 
-buttonHistory.addEventListener("click", () => {
+buttonOpenHistory.addEventListener("click", () => {
   modalHistory.showModal();
   updateHistory();
 });
@@ -109,7 +105,7 @@ buttonCloseModal.addEventListener("click", () => {
 buttonClearHistory.addEventListener("click", () => {
   const responseIsClear = confirm("Deseja limpar histórico?");
   if (responseIsClear) {
-    localStorage.removeItem("@calculator:expressionHistory");
+    localStorage.removeItem("@calculator:history");
     updateHistory();
   }
 });
