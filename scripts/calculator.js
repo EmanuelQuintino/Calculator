@@ -79,6 +79,8 @@ function updateHistory() {
         </div>
       `;
     }
+  } else {
+    containerHistory.innerHTML += `<div class="emptyHistory">Vazio</div>`;
   }
 }
 
