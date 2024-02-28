@@ -16,6 +16,10 @@ function deleteCharacter() {
   expression.innerHTML = expression.innerHTML.slice(0, -1);
 }
 
+function getCalculatorHistory() {
+  return JSON.parse(localStorage.getItem("@calculator:history"));
+}
+
 function executeExpression() {
   if (
     (expression.innerHTML.length > 0 && expression.innerHTML.includes("+")) ||
@@ -30,7 +34,7 @@ function executeExpression() {
         eval(expression.innerHTML.replaceAll("x", "*").replaceAll("%", "/100"))
       ).slice(0, totalNumbersDisplay - 5); // to continue expression
 
-      const calculatorHistory = JSON.parse(localStorage.getItem("@calculator:history"));
+      const calculatorHistory = getCalculatorHistory();
 
       if (calculatorHistory) {
         localStorage.setItem(
@@ -63,7 +67,7 @@ function executeExpression() {
 }
 
 function updateHistory() {
-  const calculatorHistory = JSON.parse(localStorage.getItem("@calculator:history"));
+  const calculatorHistory = getCalculatorHistory();
 
   containerHistory.innerHTML = "";
   if (calculatorHistory) {
@@ -103,10 +107,12 @@ buttonCloseModal.addEventListener("click", () => {
 });
 
 buttonClearHistory.addEventListener("click", () => {
-  const responseIsClear = confirm("Deseja limpar histórico?");
-  if (responseIsClear) {
-    localStorage.removeItem("@calculator:history");
-    updateHistory();
+  if (getCalculatorHistory()) {
+    const responseToClear = confirm("Deseja limpar histórico?");
+    if (responseToClear) {
+      localStorage.removeItem("@calculator:history");
+      updateHistory();
+    }
   }
 });
 
